@@ -53,3 +53,31 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy" {
   bucket = aws_s3_bucket.s3.id
   policy = data.aws_iam_policy_document.s3_bucket_policy.json
 }
+
+resource "aws_s3_bucket_object" "index" {
+    bucket = "project1-environment-s3-spotify-website"
+    key = "index.html"
+    source = "../website/index.html"
+    etag = filemd5("../website/index.html")
+}
+
+resource "aws_s3_bucket_object" "style" {
+    bucket = "project1-environment-s3-spotify-website"
+    key = "style.css"
+    source = "../website/style.css"
+    etag = filemd5("../website/style.css")
+}
+
+resource "aws_s3_bucket_object" "script" {
+    bucket = "project1-environment-s3-spotify-website"
+    key = "script.js"
+    source = "../website/script.js"
+    etag = filemd5("../website/script.js")
+}
+
+resource "aws_s3_bucket_object" "error" {
+    bucket = "project1-environment-s3-spotify-website"
+    key = "error.html"
+    source = "../website/error.html"
+    etag = filemd5("../website/error.html")
+}
