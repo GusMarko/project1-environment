@@ -78,11 +78,11 @@ jobs:
 
             - name: Test HTML Files
               run: |
-                htmlhlint index.html
+                htmllint index.html
 
             - name: Test HTML Files
               run: |
-                htmlhlint error.html
+                htmllint error.html
             
             - name: Test CSS Files
               run: |
