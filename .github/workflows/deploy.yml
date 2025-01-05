@@ -77,6 +77,9 @@ jobs:
                 cd website
                 sudo apt-get update
                 sudo apt-get install npm
+                nvm list
+                nvm install 18
+                nvm use 18
                 sudo npm install -g htmlhint stylelint eslint
 
             - name: Test HTML Files
