@@ -77,7 +77,7 @@ jobs:
                 cd website
                 sudo apt-get update
                 sudo apt-get install npm
-                sudo npm install -g htmlhint
+                sudo npm install -g htmlhint stylehint eshint
 
             - name: Test HTML Files
               run: |
@@ -88,12 +88,12 @@ jobs:
             - name: Test CSS Files
               run: |
                 cd website
-                stylelint style.css
+                stylehint style.css
             
             - name: Test JS Files
               run: |
                 cd website
-                eslint script.js
+                eshint script.js
 
     deployment:
         name: "Deploy Resources"
