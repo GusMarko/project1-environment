@@ -54,6 +54,7 @@ jobs:
 
     lint_testing_frontend_files:
         name: "Test Website Files"
+        needs: validation
         runs-on: ubuntu-latest
 
         steps:

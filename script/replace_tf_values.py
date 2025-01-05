@@ -10,6 +10,7 @@ def main():
     replace_placeholders(env)
 
 def replace_placeholders(curr_env):
+    env = get_environment()
     tfvars_path = "../iac/terraform.tfvars"
     backend_path = "../iac/provider.tf"
 
