@@ -82,18 +82,18 @@ jobs:
             - name: Test HTML Files
               run: |
                 cd website
-                htmlhint index.html error.html
+                npx htmlhint index.html error.html
 
 
             - name: Test CSS Files
               run: |
                 cd website
-                stylelint style.css
+                npx stylelint style.css
             
             - name: Test JS Files
               run: |
                 cd website
-                eslint script.js
+                npx eslint script.js
 
     deployment:
         name: "Deploy Resources"
