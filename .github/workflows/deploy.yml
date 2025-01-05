@@ -31,7 +31,12 @@ jobs:
               run: |
                 cd script
                 python3 replace_tf_values.py
-            
+          
+            - name: Upload Updated Terraform Files
+              uses: actions/upload-artifact@v3
+              with:
+                name: updated-terraform-files
+                path: iac/
 
             - name: Setup Terraform
               uses: hashicorp/setup-terraform@v2
@@ -39,6 +44,7 @@ jobs:
             - name: Validate Terraform
               run: |
                 cd iac
+                terraform init
                 terraform validate
 
             - name: Plan Terraform Changes
@@ -97,6 +103,12 @@ jobs:
             
             - name: Checkout Code
               uses: actions/checkout@v2
+            
+            - name: Download Updated Terraform Files
+              uses: actions/download-artifact@v3
+              with:
+                name: updated-terraform-files
+                path: iac 
 
             - name: Download File Artifact
               uses: actions/download-artifact@v3
@@ -110,4 +122,5 @@ jobs:
             - name: Apply Terraform Resources
               run: |
                 cd iac
+                terraform init
                 terraform apply -auto-approve tfplan
