@@ -82,7 +82,7 @@ jobs:
             - name: Test HTML Files
               run: |
                 cd website
-                htmllint index.html error.html
+                htmlhlint index.html error.html
 
 
             - name: Test CSS Files
