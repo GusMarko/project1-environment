@@ -74,16 +74,15 @@ jobs:
 
             - name: Install Testing Tools
               run: |
-                npm install -g htmlhint stylelint eslint
+                sudo apt-get update
+                sudo apt-get install npm
+                sudo npm install -g htmlhint
 
             - name: Test HTML Files
               run: |
-                htmllint index.html
+                htmllint index.html error.html
 
-            - name: Test HTML Files
-              run: |
-                htmllint error.html
-            
+
             - name: Test CSS Files
               run: |
                 stylelint style.css
