@@ -70,33 +70,29 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v3
               with:
-                node-version: "16"
+                node-version: "18"
 
             - name: Install Testing Tools
               run: |
                 cd website
                 sudo apt-get update
-                sudo apt-get install npm
-                nvm list
-                nvm install 18
-                nvm use 18
-                sudo npm install -g htmlhint stylelint eslint
+                sudo apt-get install -y npm
+                npm install -g htmlhint stylelint eslint
 
             - name: Test HTML Files
               run: |
                 cd website
-                npx htmlhint index.html error.html
-
+                htmlhint index.html error.html
 
             - name: Test CSS Files
               run: |
                 cd website
-                npx stylelint style.css
+                stylelint style.css
             
             - name: Test JS Files
               run: |
                 cd website
-                npx eslint script.js
+                eslint script.js
 
     deployment:
         name: "Deploy Resources"
@@ -130,3 +126,4 @@ jobs:
                 cd iac
                 terraform init
                 terraform apply -auto-approve tfplan
+
