@@ -57,6 +57,9 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy" {
 resource "aws_s3_bucket_object" "index" {
     bucket = "project1-environment-s3-spotify-website"
     key = "index.html"
+    depends_on = [
+    aws_s3_bucket.spotify_website
+  ]
     source = "../website/index.html"
     etag = filemd5("../website/index.html")
 }
@@ -64,6 +67,9 @@ resource "aws_s3_bucket_object" "index" {
 resource "aws_s3_bucket_object" "style" {
     bucket = "project1-environment-s3-spotify-website"
     key = "style.css"
+    depends_on = [
+    aws_s3_bucket.spotify_website
+  ]
     source = "../website/style.css"
     etag = filemd5("../website/style.css")
 }
@@ -71,6 +77,9 @@ resource "aws_s3_bucket_object" "style" {
 resource "aws_s3_bucket_object" "script" {
     bucket = "project1-environment-s3-spotify-website"
     key = "script.js"
+    depends_on = [
+    aws_s3_bucket.spotify_website
+  ]
     source = "../website/script.js"
     etag = filemd5("../website/script.js")
 }
@@ -78,6 +87,9 @@ resource "aws_s3_bucket_object" "script" {
 resource "aws_s3_bucket_object" "error" {
     bucket = "project1-environment-s3-spotify-website"
     key = "error.html"
+    depends_on = [
+    aws_s3_bucket.spotify_website
+  ]
     source = "../website/error.html"
     etag = filemd5("../website/error.html")
 }
