@@ -19,7 +19,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   default_cache_behavior {
     allowed_methods = ["GET", "HEAD"]
     cached_methods = ["GET", "HEAD"]
-    target_origin_id = data.terraform_remote_state.backend.outputs.api_gateway_url
+    target_origin_id = aws_s3_bucket.s3.id
     forwarded_values {
       query_string = true
 
