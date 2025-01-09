@@ -1,4 +1,4 @@
-data "terraform_remote_state" "networking" {
+data "terraform_remote_state" "backend" {
   backend = "s3"
 
   config = {

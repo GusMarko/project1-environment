@@ -19,7 +19,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   default_cache_behavior {
     allowed_methods = ["GET", "HEAD"]
     cached_methods = ["GET", "HEAD"]
-    target_origin_id = data.terraform_remote_state.outputs.api_gateway_id ##### API GATEWAY RESOURCE ########## PROMEEEENI
+    target_origin_id = data.terraform_remote_state.backend.outputs.api_gateway_id ##### API GATEWAY RESOURCE ########## PROMEEEENI
     forwarded_values {
       query_string = true
 
