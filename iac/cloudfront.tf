@@ -24,12 +24,13 @@ resource "aws_cloudfront_distribution" "cdn" {
     target_origin_id = aws_s3_bucket.s3.id
     forwarded_values {
       query_string = true
+      headers      = ["Origin", "Access-Control-Request-Headers", "Access-Control-Request-Method"]
 
       cookies {
         forward = "none"
       }
     }
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
