@@ -21,7 +21,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 
   default_cache_behavior {
     allowed_methods = ["GET", "HEAD", "OPTIONS"]
-    cached_methods = ["GET", "HEAD", "OPTION"]
+    cached_methods = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = aws_s3_bucket.s3.id
     forwarded_values {
       query_string = true
