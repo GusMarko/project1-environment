@@ -10,15 +10,18 @@ resource "aws_cloudfront_distribution" "cdn" {
   enabled = true
   default_root_object = "index.html"
 
+# s3 origin
   origin {
     domain_name = aws_s3_bucket.s3.bucket_regional_domain_name
     origin_id = aws_s3_bucket.s3.id
     origin_access_control_id = aws_cloudfront_origin_access_control.cdn_oac.id
   }
 
+  
+
   default_cache_behavior {
-    allowed_methods = ["GET", "HEAD"]
-    cached_methods = ["GET", "HEAD"]
+    allowed_methods = ["GET", "HEAD", "OPTIONS"]
+    cached_methods = ["GET", "HEAD", "OPTION"]
     target_origin_id = aws_s3_bucket.s3.id
     forwarded_values {
       query_string = true
