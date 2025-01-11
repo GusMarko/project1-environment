@@ -47,18 +47,7 @@ jobs:
                 terraform init
                 terraform validate
 
-            - name: Plan Terraform Changes
-              run: | 
-                cd iac
-                terraform plan -out=tfplan
-
-            - name: Upload Plan Artifact
-              uses: actions/upload-artifact@v3
-              with:
-                name: terraform-plan
-                path: iac/tfplan
-
-
+    
     deployment:
         name: "Deploy Resources"
         runs-on: ubuntu-latest
@@ -76,12 +65,6 @@ jobs:
                 name: updated-terraform-files
                 path: iac 
 
-            - name: Download File Artifact
-              uses: actions/download-artifact@v3
-              with:
-                name: terraform-plan
-                path: iac
-
             - name: Setup Terraform
               uses: hashicorp/setup-terraform@v2
 
@@ -89,5 +72,5 @@ jobs:
               run: |
                 cd iac
                 terraform init
-                terraform apply -auto-approve tfplan
+                terraform destroy -auto-approve 
 
